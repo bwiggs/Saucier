@@ -14,7 +14,7 @@ public class SauceConnectThread implements Runnable {
 	//=========================================================================
 	
 	public String username, secretKey;
-	public RequestBuffer<Request> requestBuffer = new RequestBuffer<Request>();
+	public RequestBuffer requestBuffer = new RequestBuffer();
 	
 	private URL connectionURL;
 	private Process connect;
@@ -56,15 +56,20 @@ public class SauceConnectThread implements Runnable {
 
 			// Capture all output from the sauceconnect executable
 			String line;
+			boolean captureRequests = false;
 			while (isRunning &&
 				   (line = sauceOutput.readLine()) != null) {
 				
-				if (line.contains("Connected! You may start your tests")) {
-					latch.countDown();
+				System.out.println(line);
+				
+				if(captureRequests) {
+					requestBuffer.add(new Request(line));
 				}
 				
-				System.out.println(line);
-				requestBuffer.add(new Request(line));
+				if (line.contains("Connected! You may start your tests")) {
+					latch.countDown();
+					captureRequests = true;
+				}
 			}
 
 		} catch (Exception e) {

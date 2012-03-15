@@ -12,7 +12,21 @@ public class Saucier {
 	private SauceConnectThread sauceConnect;
 	private CountDownLatch latch;
 	private static Saucier instance = null;
-	public RequestBuffer<Request> requestBuffer;
+	public RequestBuffer requestBuffer;
+	
+	//=========================================================================
+	// SINGLETON INSTANCE
+	//=========================================================================
+	
+	public static void main(String[] args) {
+		
+		if(args.length != 2) {
+			System.err.println("Usage: $ java -jar saucier [USERNAME] [API KEY]");
+		}
+		
+		Saucier sc = Saucier.getInstance(args[0], args[1]);
+		
+	}
 	
 	//=========================================================================
 	// SINGLETON INSTANCE
