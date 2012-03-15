@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project Saucier with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="/Users/brianwn/Sites/automated_testing_framework/Saucier/bin/Saucier.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="net.cpbgroup.Saucier.Saucier"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ testng.jar Sauce-Connect.jar httpcore-4.1.jar httpclient-4.1.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="/Users/brianwn/Sites/automated_testing_framework/Saucier/bin"/>
+            <zipfileset dir="/Applications/eclipse/plugins/org.testng.eclipse_6.3.2.20111203_1323/lib" includes="testng.jar"/>
+            <zipfileset dir="/Users/brianwn/Sites/automated_testing_framework/Saucier/libs" includes="Sauce-Connect.jar"/>
+            <zipfileset dir="/Users/brianwn/Sites/automated_testing_framework/Saucier/libs" includes="httpcore-4.1.jar"/>
+            <zipfileset dir="/Users/brianwn/Sites/automated_testing_framework/Saucier/libs" includes="httpclient-4.1.jar"/>
+        </jar>
+    </target>
+</project>
