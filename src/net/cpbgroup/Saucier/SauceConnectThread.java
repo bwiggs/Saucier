@@ -46,13 +46,11 @@ public class SauceConnectThread implements Runnable {
 	@Override
 	public void run() {
 		BufferedReader sauceOutput;
-		BufferedReader sauceError;
 
 		// start sauce connect
 		try {
 			connect = Runtime.getRuntime().exec("java -jar libs/Sauce-Connect.jar " + username + " " + secretKey);
 			sauceOutput = new BufferedReader(new InputStreamReader(connect.getInputStream()));
-			sauceError = new BufferedReader(new InputStreamReader(connect.getErrorStream()));
 
 			// Capture all output from the sauceconnect executable
 			String line;

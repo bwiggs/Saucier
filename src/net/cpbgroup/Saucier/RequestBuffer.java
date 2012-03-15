@@ -5,6 +5,10 @@ import java.util.Vector;
 
 public class RequestBuffer extends Vector<Request> {
 
+	/**
+	 * For serialization, since we're inheriting from Vector
+	 */
+	private static final long serialVersionUID = -2607434741110588197L;
 
 	/**
 	 * Filters the RequestBuffer by the given statusCode

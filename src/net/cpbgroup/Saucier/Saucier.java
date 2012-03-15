@@ -24,7 +24,7 @@ public class Saucier {
 			System.err.println("Usage: $ java -jar saucier [USERNAME] [API KEY]");
 		}
 		
-		Saucier sc = Saucier.getInstance(args[0], args[1]);
+		Saucier.getInstance(args[0], args[1]);
 		
 	}
 	
